@@ -1,42 +1,55 @@
 public class Main {
     public static void main(String[] args) {
-        //задача первая//
-        int[] weights = {90,91,93,92,85,87,88,89,0,0,0,0};
-        int[] weightsCopy = {90,91,93,92,85,87,88,89,0,0,0,0};
-        weights[0] = 90;
-        int januaryWeight = weights[0];
-        System.out.println(januaryWeight);
-        System.out.println(weights[0]);
-        System.out.println(weights[4]);
-        int january = 0;
-        System.out.println(weights[january]);
-        for (int i = 0; i < weights.length; i++) {
-            System.out.println(weights[i]);
-        }
-        boolean arraysAreEqual = true;
-        arraysAreEqual = weights.length == weightsCopy.length;
-        if (arraysAreEqual) {
-            for (int i = 0; i < weights.length; i++) {
-                if (weights[i] != weightsCopy[i]) {
-                    arraysAreEqual = false;
-                }
-            }
-        }
-        if(arraysAreEqual) {
-            System.out.println("Массивы одинаковы");
-        }else {
-            System.out.println("Массивы разные");
-        }
-        int maxWeight = -1;
-        for (int current : weights) {
-            if (current > maxWeight) {
-                maxWeight = current;
-            }
-        }
-        System.out.println(maxWeight);
-        for (int i = 0; i < weights.length - 1 && weights[i + 1] != 0; i++) {
-            System.out.println(weights[i+1] - weights[i]);
-        }
+    }
+    int[] arr = generateRandomArray();
 
+    public static int[] generateRandomArray() {
+        java.util.Random random = new java.util.Random();
+        int[] arr = new int[30];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = random.nextInt(100_000) + 100_000;
+        }
+        return arr;
+    }
+
+    public static void task1 () {
+
+        int sum = 0;
+        int[] arr = generateRandomArray();
+        for (int value : arr) {
+            sum += value;
+        }
+        System.out.println("Сумма трат за месяц : " + sum);
+    }
+    //задача вторая//
+    public static void task2() {
+        int[] arr = generateRandomArray();
+        int min = arr[0];
+        int max = arr[0];
+
+        for(int element : arr) {
+            if (element<min) {
+                min = element;
+            }else if (element>max) {
+                max = element;
+            }
+        }
+        System.out.println("Минимальные затраты за день " + min);
+        System.out.println("Максимальные затраты за день " + max);
+    }
+    public static void task3() {
+        int[] arr = generateRandomArray();
+        int sum = 0;
+        for(int i : arr) {
+            sum += i;
+        }
+        System.out.println(sum / (float) arr.length);
+    }
+    public static void task4 () {
+        char[] reverseFullName = {'n', 'a', 'v', 'i', ' ', 'v', 'o', 'n', 'a', 'v', 'i'};
+
+        for (int i = reverseFullName.length - 1; i>=0; i-- ){
+            System.out.println(reverseFullName[i]);
+        }
     }
 }
